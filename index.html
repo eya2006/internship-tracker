@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internship Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div>
+          <p class="eyebrow">Applications</p>
+          <h1>Internship Tracker</h1>
+        </div>
+        <div class="top-actions">
+          <input
+            id="search"
+            type="search"
+            placeholder="Search company, position, field…"
+            aria-label="Search applications"
+          />
+          <button id="add-btn" class="primary" type="button">+ Add application</button>
+        </div>
+      </header>
+
+      <section class="stats" id="stats" aria-label="Status counts"></section>
+
+      <section class="toolbar">
+        <div class="filters" id="filters"></div>
+        <label class="sort">
+          Sort
+          <select id="sort">
+            <option value="deadline">Deadline</option>
+            <option value="applied">Date applied</option>
+            <option value="followup">Follow-up date</option>
+            <option value="company">Company</option>
+            <option value="status">Status</option>
+          </select>
+        </label>
+      </section>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Position</th>
+              <th>Country</th>
+              <th>Field</th>
+              <th>Application Link</th>
+              <th>Date Applied</th>
+              <th>Deadline</th>
+              <th>Status</th>
+              <th>Contact</th>
+              <th>Follow-up Date</th>
+              <th>Interview</th>
+              <th>Result</th>
+              <th>Notes</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p id="empty" class="empty hidden">No applications match this filter.</p>
+      </div>
+    </div>
+
+    <dialog id="dialog">
+      <form id="form" method="dialog">
+        <h2 id="dialog-title">Add application</h2>
+        <div class="grid">
+          <label>Company<input name="company" required /></label>
+          <label>Position<input name="position" required /></label>
+          <label>Country<input name="country" /></label>
+          <label>Field<input name="field" placeholder="AI/ML, Product, Data…" /></label>
+          <label class="wide">Application Link<input name="link" type="url" placeholder="https://" /></label>
+          <label>Date Applied<input name="dateApplied" type="date" /></label>
+          <label>Deadline<input name="deadline" type="date" /></label>
+          <label
+            >Status
+            <select name="status" id="status-select"></select>
+          </label>
+          <label>Contact<input name="contact" placeholder="HR email or name" /></label>
+          <label>Follow-up Date<input name="followUp" type="date" /></label>
+          <label>Interview<input name="interview" placeholder="Date, round, or —" /></label>
+          <label>Result<input name="result" placeholder="Pending, offer…" /></label>
+          <label class="wide">Notes<textarea name="notes" rows="3"></textarea></label>
+        </div>
+        <div class="dialog-actions">
+          <button type="button" id="cancel" class="ghost">Cancel</button>
+          <button type="submit" class="primary">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
